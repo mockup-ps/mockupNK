@@ -5,10 +5,14 @@ import {
   TheFooter,
   TheHeader
 } from './index'
+import {
+  CButton,
+} from '@coreui/react'
 
 const TheLayout = () => {
 
   return (
+    <>    
     <div className="c-app c-default-layout">
       <TheSidebar/>
       <div className="c-wrapper">
@@ -19,6 +23,7 @@ const TheLayout = () => {
         <TheFooter/>
       </div>
     </div>
+    </>
   )
 }
 

@@ -5,6 +5,8 @@ import { logoNegative } from './logo-negative'
 import {
   cibSkype,
   cibFacebook,
+  cilArrowCircleBottom,
+  cilArrowCircleRight,
   cibTwitter,
   cibLinkedin,
   cibFlickr,
@@ -136,7 +138,9 @@ export const icons = Object.assign({}, {
   logoNegative
 }, {
   cilAlignCenter,
+  cilArrowCircleBottom,
   cilAlignLeft,
+  cilArrowCircleRight,
   cilAlignRight,
   cilApplicationsSettings,
   cilArrowRight,

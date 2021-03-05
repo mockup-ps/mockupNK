@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:UNeDocsShipBIM xmlns="urn:un:unece:uncefact:data:draft:ReusableAggregateBusinessInformationEntitySchemaModule:0:8" xmlns:rsm="urn:un:unece:uncefact:data:draft:UNeDocsShipBIM:0:8">
+    <rsm:HeaderDocument>
+        <IdentificationId>0065137/SBY/2020</IdentificationId>
+        <TypeCode>864</TypeCode>
+        <Name>Certificate of Origin</Name>
+        <SubmissionDateTime>2020-06-30T09:05:06.000Z</SubmissionDateTime>
+        <CategoryCode>NOR</CategoryCode>
+        <Remark>Invoice Number : 0620/063,</Remark>
+        <ReferenceDocument>
+            <IdentificationId>0620/063</IdentificationId>
+            <TypeCode>380</TypeCode>
+            <IssueDateTime>2020-06-25T00:00:00.000Z</IssueDateTime>
+        </ReferenceDocument>
+        <FirstSignatoryAuthentication>
+            <ActualDateTime>2020-06-30T00:00:00.000Z</ActualDateTime>
+            <PhysicalLocation>
+                <IdentificationId>IDSUB</IdentificationId>
+                <Name>SURABAYA</Name>
+            </PhysicalLocation>
+        </FirstSignatoryAuthentication>
+        <SecondSignatoryAuthentication>
+            <ActualDateTime>2020-06-30T00:00:00.000Z</ActualDateTime>
+            <PhysicalLocation>
+                <IdentificationId>IDSUB</IdentificationId>
+                <Name>SURABAYA</Name>
+            </PhysicalLocation>
+        </SecondSignatoryAuthentication>
+        <SenderParty>
+            <IdentificationId schemeId="1" schemeAgencyId="ASEAN">IDTRD080001</IdentificationId>
+        </SenderParty>
+        <RecipientParty>
+            <IdentificationId schemeId="1" schemeAgencyId="ASEAN">THTRD080006</IdentificationId>
+        </RecipientParty>
+        <IssueCountry>
+            <IdentificationId schemeId="3" schemeAgencyId="UNECE" schemeVersionId="15">ID</IdentificationId>
+            <Name>INDONESIA</Name>
+        </IssueCountry>
+    </rsm:HeaderDocument>
+    <rsm:TransportContractConsignment>
+        <ExportationDateTime>2020-06-28T00:00:00.000Z</ExportationDateTime>
+        <ImporterParty>
+            <IdentificationId schemeId="1" schemeAgencyId="ASEAN">TH</IdentificationId>
+            <Name>DUNLOPILLO (THAILAND) LIMITED</Name>
+            <SpecifiedAddress>
+                <LineOne>10/4 MOO 13 BANGNA-TRAD RD. KM 7.7T. BANGKAEW, A BANGPLEE, SAMUTPRAKA</LineOne>
+                <LineTwo>RN10540 THAILAND</LineTwo>
+            </SpecifiedAddress>
+        </ImporterParty>
+        <ExporterParty>
+            <IdentificationId schemeId="1" schemeAgencyId="ASEAN">ID</IdentificationId>
+            <Name>PT. LATEXCO INDONESIA</Name>
+            <SpecifiedAddress>
+                <LineOne>JALAN MAYJEN SUNGKONO 5 BLOK D NO. 1-6DESA SEGOROMADU KECAMATAN KEBOM</LineOne>
+                <LineTwo>AS GRESIK - INDONESIA</LineTwo>
+            </SpecifiedAddress>
+        </ExporterParty>
+        <IncludedConsignmentItem>
+            <SequenceNumeric>1</SequenceNumeric>
+            <ImportTypeCode>40081900</ImportTypeCode>
+            <FreeOnBoardValueAmount currencyId="USD">1180.30</FreeOnBoardValueAmount>
+            <GrossWeightMeasure unitCode="KGM">500.00</GrossWeightMeasure>
+            <GoodsCargoDescription>
+                <Identification>50 PIECES CONSIST OFREBOUNDED COVERED WITH WAVE SHEETS 2.5CM :10 PIECES OF 200*107*20</Identification>
+            </GoodsCargoDescription>
+            <PhysicalShippingMarks>
+                <Description>DUNLOPILLO (THAILAND) LIMITED</Description>
+            </PhysicalShippingMarks>
+            <InvoiceAssociatedDocument>
+                <IdentificationId>0620/063</IdentificationId>
+                <IssueDateTime>2020-06-25T00:00:00.000Z</IssueDateTime>
+            </InvoiceAssociatedDocument>
+            <ApplicableCustomsProcedure>
+                <OriginCriterion>CTH</OriginCriterion>
+            </ApplicableCustomsProcedure>
+            <TransportPackaging></TransportPackaging>
+        </IncludedConsignmentItem>
+        <IncludedConsignmentItem>
+            <SequenceNumeric>2</SequenceNumeric>
+            <ImportTypeCode>40081900</ImportTypeCode>
+            <FreeOnBoardValueAmount currencyId="USD">4974.30</FreeOnBoardValueAmount>
+            <GrossWeightMeasure unitCode="KGM">2050.00</GrossWeightMeasure>
+            <GoodsCargoDescription>
+                <Identification>30 PIECES OF 200*152*20</Identification>
+            </GoodsCargoDescription>
+            <PhysicalShippingMarks>
+                <Description>DUNLOPILLO (THAILAND) LIMITED</Description>
+            </PhysicalShippingMarks>
+            <InvoiceAssociatedDocument>
+                <IdentificationId>0620/063</IdentificationId>
+                <IssueDateTime>2020-06-25T00:00:00.000Z</IssueDateTime>
+            </InvoiceAssociatedDocument>
+            <ApplicableCustomsProcedure>
+                <OriginCriterion>CTH</OriginCriterion>
+            </ApplicableCustomsProcedure>
+            <TransportPackaging></TransportPackaging>
+        </IncludedConsignmentItem>
+        <IncludedConsignmentItem>
+            <SequenceNumeric>3</SequenceNumeric>
+            <ImportTypeCode>40081900</ImportTypeCode>
+            <FreeOnBoardValueAmount currencyId="USD">1985.40</FreeOnBoardValueAmount>
+            <GrossWeightMeasure unitCode="KGM">850.00</GrossWeightMeasure>
+            <GoodsCargoDescription>
+                <Identification>10 PIECES OF 200*182*20</Identification>
+            </GoodsCargoDescription>
+            <PhysicalShippingMarks>
+                <Description>DUNLOPILLO (THAILAND) LIMITED</Description>
+            </PhysicalShippingMarks>
+            <InvoiceAssociatedDocument>
+                <IdentificationId>0620/063</IdentificationId>
+                <IssueDateTime>2020-06-25T00:00:00.000Z</IssueDateTime>
+            </InvoiceAssociatedDocument>
+            <ApplicableCustomsProcedure>
+                <OriginCriterion>CTH</OriginCriterion>
+            </ApplicableCustomsProcedure>
+            <TransportPackaging></TransportPackaging>
+        </IncludedConsignmentItem>
+        <AtBorderTransportMovement>
+            <UsedTransportMeans>
+                <Name>NAVIOS DESTINY V.063N</Name>
+                <UnloadingLocation>
+                    <IdentificationId>THPAT</IdentificationId>
+                    <Name>PAT BANGKOK</Name>
+                </UnloadingLocation>
+            </UsedTransportMeans>
+        </AtBorderTransportMovement>
+        <OriginCountry>
+            <IdentificationId schemeId="ISO 3166" schemeAgencyId="5" schemeVersionId="A2">ID</IdentificationId>
+            <Name>INDONESIA</Name>
+        </OriginCountry>
+        <FinalDestinationCountry>
+            <IdentificationId schemeId="ISO 3166" schemeAgencyId="5" schemeVersionId="A2">TH</IdentificationId>
+            <Name>THAILAND</Name>
+        </FinalDestinationCountry>
+    </rsm:TransportContractConsignment>
+</rsm:UNeDocsShipBIM>

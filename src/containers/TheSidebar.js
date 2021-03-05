@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import {
   CCreateElement,
   CSidebar,
+  CImg,
   CSidebarBrand,
   CSidebarNav,
   CSidebarNavDivider,
@@ -24,18 +25,19 @@ const TheSidebar = () => {
   return (
     <CSidebar
       show={show}
+      minimize
       onShowChange={(val) => dispatch({type: 'set', sidebarShow: val })}
     >
-      <CSidebarBrand className="d-md-down-none" to="/">
-        <CIcon
+      <CSidebarBrand style={{backgroundColor: "#02275d"}} className="d-md-down-none" to="/">
+        <CImg
           className="c-sidebar-brand-full"
-          name="logo-negative"
-          height={35}
+          src="https://intr.insw.go.id/img/content/INSW%20Logo.png"
+          width="50%"
         />
-        <CIcon
+        <CImg
           className="c-sidebar-brand-minimized"
-          name="sygnet"
-          height={35}
+          src="https://intr.insw.go.id/img/content/INSW%20Logo.png"
+          width="80%"
         />
       </CSidebarBrand>
       <CSidebarNav>

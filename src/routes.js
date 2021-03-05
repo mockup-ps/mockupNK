@@ -25,7 +25,18 @@ const ButtonDropdowns = React.lazy(() => import('./views/buttons/button-dropdown
 const ButtonGroups = React.lazy(() => import('./views/buttons/button-groups/ButtonGroups'));
 const Buttons = React.lazy(() => import('./views/buttons/buttons/Buttons'));
 const Charts = React.lazy(() => import('./views/charts/Charts'));
-const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
+const Tindaklanjut = React.lazy(() => import('./views/dashboard/Viavalen'));
+const Utama = React.lazy(() => import('./views/dashboard/Utama'));
+const ViaValenRKI = React.lazy(() => import('./views/dashboard/ViaValenRKI'));
+const ViaValenKemenperin = React.lazy(() => import('./views/dashboard/Kemenperin/ViaValenKemenperin'));
+const FormKemenperin = React.lazy(() => import('./views/dashboard/Kemenperin/forma.js'));
+const ViaValenKepKuota = React.lazy(() => import('./views/dashboard/ViaValenKepKuota'));
+const ViaValenDataDemand = React.lazy(() => import('./views/dashboard/ViaValenDataDemand'));
+const ViaValenLHV = React.lazy(() => import('./views/dashboard/ViaValenLHV'));
+const Monitoring = React.lazy(() => import('./views/dashboard/Monitoring'));
+const Kotak = React.lazy(() => import('./views/dashboard/Kotak'));
+const Beranda = React.lazy(() => import('./views/dashboard/Beranda'));
+const FormA = React.lazy(() => import('./views/dashboard/forma.js'));
 const CoreUIIcons = React.lazy(() => import('./views/icons/coreui-icons/CoreUIIcons'));
 const Flags = React.lazy(() => import('./views/icons/flags/Flags'));
 const Brands = React.lazy(() => import('./views/icons/brands/Brands'));
@@ -39,8 +50,18 @@ const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 
 const routes = [
-  { path: '/', exact: true, name: 'Home' },
-  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/', exact: true, name: 'Beranda', component: Beranda},
+  { path: '/monitoring', name: 'Dashboard Monitoring', component: Monitoring },
+  { path: '/kotak', name: 'Kotak', component: Kotak },
+  { path: '/tindaklanjut/form', name: 'Form', component: Utama },
+  { path: '/tindaklanjut', name: 'Tindak Lanjut', component: Tindaklanjut },    
+  { path: '/RKI', name: 'Rencana Kebutuhan Impor', component: ViaValenRKI, exact:true },
+  { path: '/RKI/form', name: 'Form Input', component: FormA },  
+  { path: '/kemenperin', name: 'Pengajuan RKI', component: ViaValenKemenperin, exact:true}, 
+  { path: '/kemenperin/form', name: 'Detail Pengajuan RKI', component: FormKemenperin }, 
+  { path: '/kuotaimpor', name: 'Keputusan Kuota Impor', component: ViaValenKepKuota },
+  { path: '/datademand', name: 'Data Demand', component: ViaValenDataDemand }, 
+  { path: '/lhv', name: 'Laporan Hasil Verifikasi', component: ViaValenLHV },    
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },
