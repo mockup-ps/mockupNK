@@ -42,8 +42,44 @@ const FormProduksi = (props) => {
     }]);   
     const [realisasi,setRealisasi] = useState() 
     const [hitung, setHitung] = useState(0)
-    const [rencanaproduksi, setRencanaproduksi] = useState()
-    const [realisasiproduksi, setRealisasiProduksi] = useState()
+    const [rencanaproduksi, setRencanaproduksi] = useState([
+        {
+            id:1,
+            periode:"2020",
+            bulan:"Januari",
+            nmproduk:"Cairan Inhalasi",
+            bahanbaku:"0.3",
+            jnssatuanbahanbaku:"TNE",
+            produkjadi:"160.000",
+            jnssatuanprodukjadi:"LTR"           
+        },
+        {
+            id:2,
+            periode:"2020",
+            bulan:"Februari",
+            nmproduk:"Tetes Mata",
+            bahanbaku:"0.15",
+            jnssatuanbahanbaku:"TNE",                
+            produkjadi:"1.400.000",
+            jnssatuanprodukjadi:"PCS"                           
+        }
+    ])
+    const [realisasiproduksi, setRealisasiProduksi] = useState([
+        {
+            id:1,
+            tahun:"2020",
+            jenis:"Cairan Inhalasi",
+            jnssatuanproduk:"LTR",
+            volume:"158.678"
+        },
+        {
+            id:2,
+            tahun:"2020",
+            jenis:"Tetes Mata",
+            jnssatuanproduk:"PCS",
+            volume:"1.357.135"
+        }  
+    ])
     const fieldrencanaproduksi = [
       { key: 'id', _style: { width: '3%'}, label:"No" },
       { key: 'periode', _style: { width: '5%'}, label:"Periode" },
@@ -262,17 +298,18 @@ const FormProduksi = (props) => {
         setForm(props.certificate)
         setForm1(props.informasi)
       });
+      const [modalrencanaproduksi,setModalrencanaproduksi] = useState(false)
   return (
-    <>
+    <>        
                 <div>
                 <h4>Rencana Penggunaan Garam Impor dan Produksi</h4>
                 </div>
                 <hr/>
-                <div className="d-flex">                       
+                {/* <div className="d-flex">                       
                       <div className="ml-auto p-2 d-flex align-items-end"> 
                           <CButton onClick={()=>handleRencana()}className="btn btn-sm btn-info">Tambah + </CButton>
                       </div>                                                                   
-                  </div>   
+                  </div>    */}
             <CModal
                 show={modalrencanadistribusi}
                 onClose={()=>setModalrencanadistribusi(false)}
@@ -304,9 +341,8 @@ const FormProduksi = (props) => {
                       (item)=>{
                           return(
                               <td>
-                                  <CButton className="btn btn-sm btn-success">Lihat</CButton>{' '}
-                                  <CButton className="btn btn-sm btn-warning">Edit</CButton>{' '}
-                                  <CButton className="btn btn-sm btn-danger">Hapus</CButton>
+                                  <CButton className="btn btn-sm btn-warning" disabled>Edit</CButton>{' '}
+                                  <CButton className="btn btn-sm btn-danger" disabled>Hapus</CButton>
                               </td>
                           )
                       }
@@ -318,11 +354,11 @@ const FormProduksi = (props) => {
                 <h4>Realisasi Produksi</h4>
                 </div>
                 <hr/> 
-                <div className="d-flex">                       
+                {/* <div className="d-flex">                       
                       <div className="ml-auto p-2 d-flex align-items-end"> 
                           <CButton onClick={()=>handleRealisasi()} className="btn btn-sm btn-info">Tambah + </CButton>
                       </div>                                                                   
-                  </div>                              
+                  </div>                               */}
               <CRow className="px-2">                               
                   <CDataTable
                   addTableClasses="joss"

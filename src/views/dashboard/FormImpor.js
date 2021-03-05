@@ -47,8 +47,8 @@ const FormImpor = (props) => {
       { key: 'id', _style: { width: '3%'}, label:"No" },
       { key: 'periode', _style: { width: '10%'}, label:"Periode" },      
       { key: 'jenis', _style: { width: '20%'}, label:"Jenis" },
+      { key: 'hscode', _style: { width: '15%'}, label:"Pos Tarif" },      
       { key: 'stdmutu', _style: { width: '10%'}, label:"Standard Mutu" },      
-      { key: 'hscode', _style: { width: '15%'}, label:"Pos Tarif" },
       { key: 'negasal', _style: { width: '5%'}, label:"Negara Asal" },
       { key: 'pemasukan', _style: { width: '10%'}, label:"Tempat Pemasukan" }, 
       { key: 'volume', _style: { width: '5%'}, label:"Jumlah Satuan" }, 
@@ -56,6 +56,7 @@ const FormImpor = (props) => {
       { key: 'action', _style: { width: '20%'}, label:"Aksi"}
     ] 
     const handleRencana = () => {
+        setModalrencanaimpor(false) 
         setRencanaimpor([
             {
                 id:1,
@@ -85,11 +86,11 @@ const FormImpor = (props) => {
         { key: 'id', _style: { width: '3%'}, label:"No" },
         { key: 'tahun', _style: { width: '10%'}, label:"Periode" },
         { key: 'jenis', _style: { width: '30%'}, label:"Jenis" },
+        { key: 'hscode', _style: { width: '15%'}, label:"Pos Tarif" },        
         { key: 'stdmutu', _style: { width: '30%'}, label:"Standard Mutu" },        
-        { key: 'hscode', _style: { width: '15%'}, label:"Pos Tarif" },
         { key: 'volume', _style: { width: '15%'}, label:"Jumlah Satuan" },
         { key: 'jnssatuan', _style: { width: '15%'}, label:"Jenis Satuan" },           
-        { key: 'action', _style: { width: '25%'}, label:"Aksi"}
+        // { key: 'action', _style: { width: '25%'}, label:"Aksi"}
       ]    
     const alamatpabrik = [
     {
@@ -270,15 +271,130 @@ const FormImpor = (props) => {
         setForm(props.certificate)
         setForm1(props.informasi)
       });
+      const pilihannegara = [
+        { value: 'ID', label: 'Indonesia' },
+        { value: 'MY', label: 'Malaysia' },
+        { value: 'TH', label: 'Thailand' },
+        { value: 'US', label: 'United States of America'},
+      ]   
+      const pilihanpelabuhan = [
+        { value: 'IDTPP', label: 'Tanjung Priok' },
+        { value: 'IDPKS', label: 'Pangkalan Susu' },
+        { value: 'IDKOJ', label: 'Koja' },
+        { value: 'IDRAU', label: 'Riau'},
+        { value: 'IDBLW', label: 'Belawan'},
+        { value: 'IDMAK', label: 'Makassar'},
+      ] 
+      const pilihansatuan = [
+        { value: 'TNE', label: 'Ton' },
+        { value: 'LTR', label: 'Liter' },
+        { value: 'KGM', label: 'Kilogram' }
+      ]                  
+    const [modalrencanaimpor, setModalrencanaimpor] = useState(false)
   return (
     <>
+                <CModal
+                    show={modalrencanaimpor}
+                    onClose={()=>setModalrencanaimpor(false)}
+                    size="lg"                
+                >
+                    <CModalHeader closeButton>
+                        <h4>Input Rencana Impor Komoditas Pergaraman Industri</h4>
+                    </CModalHeader>
+                    <CModalBody>
+                        <CFormGroup>
+                            <CRow>
+                                <CCol md="3">
+                                    <CLabel>Periode</CLabel>
+                                    <CSelect>
+                                        <option>2020</option>
+                                        <option>2019</option>
+                                        <option>2018</option>
+                                    </CSelect>
+                                </CCol>
+                            </CRow>
+                            <CRow>
+                                <CCol md="4">
+                                    <CLabel>Jenis</CLabel>
+                                    <CSelect>
+                                        <option></option>
+                                        <option>Garam Industri</option>
+                                        <option>Garam Konsumsi</option>
+                                    </CSelect>
+                                </CCol>
+                                <CCol md="4">
+                                    <CLabel>Standard Mutu</CLabel>
+                                    <CSelect>
+                                        <option></option>
+                                        <option>NaCl maksimal 97%</option>
+                                        <option>NaCl 97-99%</option>
+                                    </CSelect>
+                                </CCol> 
+                                <CCol md="4">
+                                    <CLabel>Pos Tarif</CLabel>
+                                    <CSelect>
+                                        <option></option>
+                                        <option>2501.00.99</option>
+                                        <option>2501.00.92</option>
+                                    </CSelect>
+                                </CCol>
+                            </CRow>
+                            <CRow> 
+                                <CCol md="12">
+                                    <CLabel>Negara Asal</CLabel>
+                                    <Select
+                                        isMulti
+                                        name="negara"
+                                        options={pilihannegara}
+                                        className="basic-multi-select"
+                                        classNamePrefix="select"
+                                    />                                    
+                                </CCol>                                                                                               
+                            </CRow>
+                            <CRow> 
+                                <CCol md="12">
+                                    <CLabel>Tempat Pemasukan</CLabel>
+                                    <Select
+                                        isMulti
+                                        name="pelabuhan"
+                                        options={pilihanpelabuhan}
+                                        className="basic-multi-select"
+                                        classNamePrefix="select"
+                                    />                                    
+                                </CCol>                                                                                               
+                            </CRow>
+                            <CRow>
+                                <CCol md="6">
+                                    <CLabel>Jumlah Satuan</CLabel>
+                                    <CInput></CInput>
+                                </CCol>
+                                <CCol md="6">
+                                    <CLabel>Jenis Satuan</CLabel>
+                                    <Select
+                                    options={pilihansatuan}
+                                    />
+                                </CCol>                                
+                            </CRow>                          
+                        </CFormGroup>
+                    </CModalBody>
+                    <CModalFooter>
+                      <CRow>
+                        <div className="pr-2">
+                        <CButton onClick={()=>handleRencana()} color="info">Simpan</CButton>                          
+                        </div>
+                        <div>
+                        <CButton color="danger">Batal</CButton>
+                        </div>
+                      </CRow>                         
+                    </CModalFooter>
+                </CModal>    
                 <div>
                 <h4>Rencana Impor Komoditas Pergaraman Industri</h4>
                 </div>
                 <hr/>
                 <div className="d-flex"> 
                       <div className="ml-auto p-2 d-flex align-items-end"> 
-                          <CButton onClick={()=>handleRencana()}className="btn btn-sm btn-info">Tambah + </CButton>
+                          <CButton onClick={()=>setModalrencanaimpor(true)} className="btn btn-sm btn-info">Tambah + </CButton>
                       </div>                                                                   
                   </div>                 
               <CRow className="px-2">                 
@@ -291,7 +407,6 @@ const FormImpor = (props) => {
                       (item)=>{
                           return(
                               <td>
-                                  <CButton className="btn btn-sm btn-success">Lihat</CButton>{' '}
                                   <CButton className="btn btn-sm btn-warning">Edit</CButton>{' '}
                                   <CButton className="btn btn-sm btn-danger">Hapus</CButton>
                               </td>
@@ -331,16 +446,16 @@ const FormImpor = (props) => {
                   addTableClasses="joss"
                   fields={fieldrealisasiimpor}
                   items={realisasi}
-                  scopedSlots = {{
-                      'action':
-                      (item) =>{
-                          return(
-                              <td>
-                                  <CButton className="btn btn-sm"color="success">Detail</CButton>
-                              </td>                              
-                          )
-                      }
-                  }}
+                //   scopedSlots = {{
+                //       'action':
+                //       (item) =>{
+                //           return(
+                //               <td>
+                //                   <CButton className="btn btn-sm"color="success">Detail</CButton>
+                //               </td>                              
+                //           )
+                //       }
+                //   }}
                   />                                                               
               </CRow> 
               <hr/>                                         

@@ -48,20 +48,25 @@ const FormProduksi = (props) => {
       { key: 'id', _style: { width: '3%'}, label:"No" },
       { key: 'periode', _style: { width: '5%'}, label:"Periode" },
       { key: 'bulan', _style: { width: '5%'}, label:"Bulan" },                    
-      { key: 'nmproduk', _style: { width: '20%'}, label:"Nama Produk" },
+      { key: 'nmproduk', _style: { width: '15%'}, label:"Nama Produk" },
+      { key: 'hscode', _style: { width: '10%'}, label:"Post Tarif" },  
+      { key: 'stdmutu', _style: { width: '20%'}, label:"Standard Mutu" },          
       { key: 'bahanbaku', _style: { width: '12%'}, label:"Jml. Bahan Baku" }, 
-      { key: 'jnssatuanbahanbaku', _style: { width: '12%'}, label:"Jns. Satuan Bahan Baku" },            
+      { key: 'jnssatuanbahanbaku', _style: { width: '3%'}, label:"Satuan" },            
       { key: 'produkjadi', _style: { width: '12%'}, label:"Jml. Produk Jadi" },  
-      { key: 'jnssatuanprodukjadi', _style: { width: '12%'}, label:"Jns. Satuan Produk Jadi" },              
-      { key: 'action', _style: { width: '30%'}, label:"Aksi"}
+      { key: 'jnssatuanprodukjadi', _style: { width: '3%'}, label:"Satuan" },              
+      { key: 'action', _style: { width: '12%'}, label:"Aksi"}
     ]  
     const handleRencana = () => {
+        setModalrencanaproduksi(false)
         setRencanaproduksi([
             {
                 id:1,
                 periode:"2020",
                 bulan:"Januari",
                 nmproduk:"Cairan Inhalasi",
+                hscode:"3004.90.20",
+                stdmutu:"NaCl maksimal 97%",
                 bahanbaku:"0.3",
                 jnssatuanbahanbaku:"TNE",
                 produkjadi:"160.000",
@@ -72,6 +77,8 @@ const FormProduksi = (props) => {
                 periode:"2020",
                 bulan:"Februari",
                 nmproduk:"Tetes Mata",
+                hscode:"3004.90.96",
+                stdmutu:"NaCl 97-99%",
                 bahanbaku:"0.15",
                 jnssatuanbahanbaku:"TNE",                
                 produkjadi:"1.400.000",
@@ -82,10 +89,12 @@ const FormProduksi = (props) => {
     const fieldrealisasiproduksi = [
         { key: 'id', _style: { width: '3%'}, label:"No" },
         { key: 'tahun', _style: { width: '10%'}, label:"Periode" },
-        { key: 'jenis', _style: { width: '30%'}, label:"Nama Produk" },
-        { key: 'volume', _style: { width: '15%'}, label:"Jumlah Produk" },
-        { key: 'jnssatuanproduk', _style: { width: '15%'}, label:"Jenis Satuan Produk" },                   
-        { key: 'action', _style: { width: '25%'}, label:"Aksi"}
+        { key: 'jenis', _style: { width: '20%'}, label:"Nama Produk" },
+        { key: 'hscode', _style: { width: '15%'}, label:"Post Tarif" },
+        { key: 'stdmutu', _style: { width: '15%'}, label:"Standard Mutu" },        
+        { key: 'volume', _style: { width: '20%'}, label:"Jumlah Produk" },
+        { key: 'jnssatuanproduk', _style: { width: '5%'}, label:"Satuan" },                   
+        { key: 'action', _style: { width: '12%'}, label:"Aksi"}
       ]    
     const alamatpabrik = [
     {
@@ -196,12 +205,14 @@ const FormProduksi = (props) => {
         props.jehee(hitung)
     }       
     const handleRealisasi = () => {
-        console.log("hehe")
+        setModalrealisasiproduksi(false)
         setRealisasiProduksi([
             {
                 id:1,
                 tahun:"2020",
                 jenis:"Cairan Inhalasi",
+                hscode:"3004.90.20",
+                stdmutu:"NaCl maksimal 97%",
                 jnssatuanproduk:"LTR",
                 volume:"158.678"
             },
@@ -209,6 +220,8 @@ const FormProduksi = (props) => {
                 id:2,
                 tahun:"2020",
                 jenis:"Tetes Mata",
+                hscode:"3004.90.96",
+                stdmutu:"NaCl 97-99%",
                 jnssatuanproduk:"PCS",
                 volume:"1.357.135"
             }                                 
@@ -262,15 +275,209 @@ const FormProduksi = (props) => {
         setForm(props.certificate)
         setForm1(props.informasi)
       });
+      const pilihannegara = [
+        { value: 'ID', label: 'Indonesia' },
+        { value: 'MY', label: 'Malaysia' },
+        { value: 'TH', label: 'Thailand' },
+        { value: 'US', label: 'United States of America'},
+      ]   
+      const pilihanpelabuhan = [
+        { value: 'IDTPP', label: 'Tanjung Priok' },
+        { value: 'IDPKS', label: 'Pangkalan Susu' },
+        { value: 'IDKOJ', label: 'Koja' },
+        { value: 'IDRAU', label: 'Riau'},
+        { value: 'IDBLW', label: 'Belawan'},
+        { value: 'IDMAK', label: 'Makassar'},
+      ] 
+      const pilihansatuan = [
+        { value: 'TNE', label: 'Ton' },
+        { value: 'LTR', label: 'Liter' },
+        { value: 'KGM', label: 'Kilogram' }
+      ]    
+      const pilihankodehs = [
+        { value: '25010099', label: '2501.00.99' },
+        { value: '25010092', label: '2501.00.92' },          
+      ]   
+      const pilihanstdmutu = [
+        { value: '1', label: 'NaCl Maks 97%' },   
+        { value: '2', label: 'NaCl 97-99%' },          
+      ]             
+      const [modalrealisasiproduksi, setModalrealisasiproduksi] = useState(false)    
+      const [modalrencanaproduksi,setModalrencanaproduksi] = useState(false)
   return (
     <>
+<CModal
+                    show={modalrealisasiproduksi}
+                    onClose={()=>setModalrealisasiproduksi(false)}
+                    size="lg"                
+                >
+                    <CModalHeader closeButton>
+                        <h4>Input Realisasi Produksi</h4>
+                    </CModalHeader>
+                    <CModalBody>
+                        <CFormGroup>
+                            <CRow>
+                                <CCol md="3">
+                                    <CLabel>Periode</CLabel>
+                                    <CSelect>
+                                        <option>2020</option>
+                                        <option>2019</option>
+                                        <option>2018</option>
+                                    </CSelect>
+                                </CCol>                              
+                            </CRow>
+                            <CRow>
+                                <CCol md="4">
+                                    <CLabel>Nama Produk</CLabel>
+                                    <CInput/>
+                                </CCol>
+                                <CCol md="4">
+                                    <CLabel>Standard Mutu</CLabel>
+                                    <Select
+                                    options={pilihanstdmutu}
+                                    />
+                                </CCol> 
+                                <CCol md="4">
+                                    <CLabel>Pos Tarif</CLabel>
+                                    <Select
+                                    options={pilihankodehs}
+                                    />
+                                    {/* <CSelect>
+                                        <option></option>
+                                        <option>2501.00.99</option>
+                                        <option>2501.00.92</option>
+                                    </CSelect> */}
+                                </CCol>
+                            </CRow>
+                            <CRow> 
+                                <CCol md="6">
+                                    <CLabel>Jumlah Produk</CLabel>
+                                    <CInput type="number" />                                   
+                                </CCol>   
+                                <CCol md="6">
+                                    <CLabel>Satuan Produk</CLabel>
+                                    <Select
+                                    options={pilihansatuan}
+                                    />                                   
+                                </CCol>                                                                                                                              
+                            </CRow>                                                      
+                        </CFormGroup>
+                    </CModalBody>
+                    <CModalFooter>
+                      <CRow>
+                        <div className="pr-2">
+                        <CButton onClick={()=>handleRealisasi()} color="info">Simpan</CButton>                          
+                        </div>
+                        <div>
+                        <CButton color="danger">Batal</CButton>
+                        </div>
+                      </CRow>                         
+                    </CModalFooter>
+                </CModal>    
+                <CModal
+                    show={modalrencanaproduksi}
+                    onClose={()=>setModalrencanaproduksi(false)}
+                    size="lg"                
+                >
+                    <CModalHeader closeButton>
+                        <h4>Input Rencana Penggunaan Garam Impor dan Produksi</h4>
+                    </CModalHeader>
+                    <CModalBody>
+                        <CFormGroup>
+                            <CRow>
+                                <CCol md="3">
+                                    <CLabel>Periode</CLabel>
+                                    <CSelect>
+                                        <option>2020</option>
+                                        <option>2019</option>
+                                        <option>2018</option>
+                                    </CSelect>
+                                </CCol>
+                                <CCol md="3">
+                                    <CLabel>Bulan</CLabel>
+                                    <CSelect>
+                                        <option>Januari</option>
+                                        <option>Februari</option>
+                                        <option>Maret</option>
+                                        <option>April</option>
+                                        <option>Mei</option>
+                                        <option>Juni</option>   
+                                        <option>Juli</option>
+                                        <option>Agustus</option>
+                                        <option>September</option>  
+                                        <option>Oktober</option>
+                                        <option>November</option>
+                                        <option>Desember</option>                                                                                                                   
+                                    </CSelect>
+                                </CCol>                                
+                            </CRow>
+                            <CRow>
+                                <CCol md="4">
+                                    <CLabel>Nama Produk</CLabel>
+                                    <CInput/>
+                                </CCol>
+                                <CCol md="4">
+                                    <CLabel>Standard Mutu</CLabel>
+                                    <Select
+                                    options={pilihanstdmutu}
+                                    />
+                                </CCol> 
+                                <CCol md="4">
+                                    <CLabel>Pos Tarif</CLabel>
+                                    <Select
+                                    options={pilihankodehs}
+                                    />
+                                    {/* <CSelect>
+                                        <option></option>
+                                        <option>2501.00.99</option>
+                                        <option>2501.00.92</option>
+                                    </CSelect> */}
+                                </CCol>
+                            </CRow>
+                            <CRow> 
+                                <CCol md="6">
+                                    <CLabel>Jumlah Bahan Baku</CLabel>
+                                    <CInput type="number" />                                   
+                                </CCol>   
+                                <CCol md="6">
+                                    <CLabel>Satuan Bahan Baku</CLabel>
+                                    <Select
+                                    options={pilihansatuan}
+                                    />                                   
+                                </CCol>                                                                                                                              
+                            </CRow>
+                            <CRow> 
+                                <CCol md="6">
+                                    <CLabel>Jumlah Produk Jadi</CLabel>
+                                    <CInput type="number" />                                   
+                                </CCol>   
+                                <CCol md="6">
+                                    <CLabel>Satuan Produk Jadi</CLabel>
+                                    <Select
+                                    options={pilihansatuan}
+                                    />                                   
+                                </CCol>                                                                                                                              
+                            </CRow>                                                      
+                        </CFormGroup>
+                    </CModalBody>
+                    <CModalFooter>
+                      <CRow>
+                        <div className="pr-2">
+                        <CButton onClick={()=>handleRencana()} color="info">Simpan</CButton>                          
+                        </div>
+                        <div>
+                        <CButton color="danger">Batal</CButton>
+                        </div>
+                      </CRow>                         
+                    </CModalFooter>
+                </CModal>    
                 <div>
                 <h4>Rencana Penggunaan Garam Impor dan Produksi</h4>
                 </div>
                 <hr/>
                 <div className="d-flex">                       
                       <div className="ml-auto p-2 d-flex align-items-end"> 
-                          <CButton onClick={()=>handleRencana()}className="btn btn-sm btn-info">Tambah + </CButton>
+                          <CButton onClick={()=>setModalrencanaproduksi(true)}className="btn btn-sm btn-info">Tambah + </CButton>
                       </div>                                                                   
                   </div>   
             <CModal
@@ -304,9 +511,8 @@ const FormProduksi = (props) => {
                       (item)=>{
                           return(
                               <td>
-                                  <CButton className="btn btn-sm btn-success">Lihat</CButton>{' '}
-                                  <CButton className="btn btn-sm btn-warning">Edit</CButton>{' '}
-                                  <CButton className="btn btn-sm btn-danger">Hapus</CButton>
+                                  <CButton className="btn btn-sm btn-warning"><CIcon size={'sm'} name={'cilPencil'} /></CButton>{' '}
+                                  <CButton className="btn btn-sm btn-danger"><CIcon size={'sm'} name={'cilTrash'} /></CButton>
                               </td>
                           )
                       }
@@ -320,7 +526,7 @@ const FormProduksi = (props) => {
                 <hr/> 
                 <div className="d-flex">                       
                       <div className="ml-auto p-2 d-flex align-items-end"> 
-                          <CButton onClick={()=>handleRealisasi()} className="btn btn-sm btn-info">Tambah + </CButton>
+                          <CButton onClick={()=>setModalrealisasiproduksi(true)} className="btn btn-sm btn-info">Tambah + </CButton>
                       </div>                                                                   
                   </div>                              
               <CRow className="px-2">                               
@@ -333,8 +539,9 @@ const FormProduksi = (props) => {
                       (item) =>{
                           return(
                               <td>
-                                  <CButton className="btn btn-sm"color="success">Detail</CButton>
-                              </td>                              
+                                  <CButton className="btn btn-sm btn-warning"><CIcon size={'sm'} name={'cilPencil'} /></CButton>{' '}
+                                  <CButton className="btn btn-sm btn-danger"><CIcon size={'sm'} name={'cilTrash'} /></CButton>
+                              </td>                            
                           )
                       }
                   }}

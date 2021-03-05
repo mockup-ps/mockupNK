@@ -312,6 +312,7 @@ const FormImpor = (props) => {
         setForm(props.certificate)
         setForm1(props.informasi)
       });
+      const [modalrencanaimpor,setModalrencanaimpor] = useState(false)
   return (
     <>
                 <div>
@@ -368,8 +369,8 @@ const FormImpor = (props) => {
                 <div className="pb-2 d-flex">
                       <div className="p-2">
                           <CLabel>Periode Awal</CLabel>
-                          <CSelect value={1} disabled>
-                              <option>2020</option>
+                          <CSelect disabled>
+                              <option selected>2020</option>
                               <option>2019</option>
                               <option>2018</option>
                           </CSelect>
@@ -377,7 +378,7 @@ const FormImpor = (props) => {
                       <div className="p-2">
                           <CLabel>Periode Akhir</CLabel>
                           <CSelect value={0} disabled>
-                              <option>2020</option>
+                              <option selected>2020</option>
                               <option>2019</option>
                               <option>2018</option>                              
                           </CSelect>

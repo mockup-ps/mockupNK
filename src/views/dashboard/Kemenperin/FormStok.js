@@ -49,7 +49,30 @@ const FormStok = (props) => {
             }
         ])
     }    
-    const [rencanaimpor, setRencanaimpor] = useState()
+    const [rencanaimpor, setRencanaimpor] = useState([
+        {
+            id:1,
+            periode:"2020",
+            jenis:"Garam Industri",
+            stdmutu:" NaCl maksimal 97%",
+            hscode:"2501.00.99",
+            negasal:"Jerman",
+            pemasukan:"Tanjung Priok",
+            volume:"1.50" ,
+            jnssatuan:"TNE"           
+        },
+        {
+            id:2,
+            periode:"2020",
+            jenis:"Garam Industri Farmasi",
+            stdmutu:"NaCl 97-99%",
+            hscode:"2501.00.99",
+            negasal:"Jerman",
+            pemasukan:"Merak",
+            volume:"4.50",
+            jnssatuan:"TNE"            
+        }
+    ])
     const fieldrencanaimpor = [
       { key: 'id', _style: { width: '3%'}, label:"No" },     
       { key: 'jenis', _style: { width: '20%'}, label:"Jenis" },
@@ -102,8 +125,44 @@ const FormStok = (props) => {
     }]);   
     const [realisasi,setRealisasi] = useState() 
     const [hitung, setHitung] = useState(0)
-    const [rencanaproduksi, setRencanaproduksi] = useState()
-    const [realisasiproduksi, setRealisasiProduksi] = useState()
+    const [rencanaproduksi, setRencanaproduksi] = useState([
+        {
+            id:1,
+            periode:"2020",
+            bulan:"Januari",
+            nmproduk:"Cairan Inhalasi",
+            bahanbaku:"0.3",
+            jnssatuanbahanbaku:"TNE",
+            produkjadi:"160.000",
+            jnssatuanprodukjadi:"LTR"           
+        },
+        {
+            id:2,
+            periode:"2020",
+            bulan:"Februari",
+            nmproduk:"Tetes Mata",
+            bahanbaku:"0.15",
+            jnssatuanbahanbaku:"TNE",                
+            produkjadi:"1.400.000",
+            jnssatuanprodukjadi:"PCS"                           
+        }
+    ])
+    const [realisasiproduksi, setRealisasiProduksi] = useState([
+        {
+            id:1,
+            tahun:"2020",
+            jenis:"Cairan Inhalasi",
+            jnssatuanproduk:"LTR",
+            volume:"158.678"
+        },
+        {
+            id:2,
+            tahun:"2020",
+            jenis:"Tetes Mata",
+            jnssatuanproduk:"PCS",
+            volume:"1.357.135"
+        }
+    ])
     const fieldrencanaproduksi = [
       { key: 'id', _style: { width: '3%'}, label:"No" },                    
       { key: 'nmproduk', _style: { width: '20%'}, label:"Nama Produk" },          
@@ -300,11 +359,11 @@ const FormStok = (props) => {
                 <h4>Perkiraan Stok Akhir Bahan Baku</h4>
                 </div>
                 <hr/>
-                <div className="d-flex">                       
+                {/* <div className="d-flex">                       
                       <div className="ml-auto p-2 d-flex align-items-end"> 
                           <CButton onClick={()=>handleRencana()}className="btn btn-sm btn-info">Tambah + </CButton>
                       </div>                                                                   
-                  </div>   
+                  </div>    */}
             <CModal
                 show={modalrencanadistribusi}
                 onClose={()=>setModalrencanadistribusi(false)}
@@ -336,9 +395,8 @@ const FormStok = (props) => {
                       (item)=>{
                           return(
                               <td>
-                                  <CButton className="btn btn-sm btn-success">Lihat</CButton>{' '}
-                                  <CButton className="btn btn-sm btn-warning">Edit</CButton>{' '}
-                                  <CButton className="btn btn-sm btn-danger">Hapus</CButton>
+                                  <CButton className="btn btn-sm btn-warning" disabled>Edit</CButton>{' '}
+                                  <CButton className="btn btn-sm btn-danger" disabled>Hapus</CButton>
                               </td>
                           )
                       }
@@ -350,11 +408,11 @@ const FormStok = (props) => {
                 <h4>Perkiraan Stok Akhir Produk Jadi</h4>
                 </div>
                 <hr/> 
-                <div className="d-flex">                       
+                {/* <div className="d-flex">                       
                       <div className="ml-auto p-2 d-flex align-items-end"> 
                           <CButton onClick={()=>handleRencanaJadi()} className="btn btn-sm btn-info">Tambah + </CButton>
                       </div>                                                                   
-                  </div>                              
+                  </div>                               */}
               <CRow className="px-2">                               
               <CDataTable
                   addTableClasses="joss"
@@ -365,9 +423,8 @@ const FormStok = (props) => {
                       (item)=>{
                           return(
                               <td>
-                                  <CButton className="btn btn-sm btn-success">Lihat</CButton>{' '}
-                                  <CButton className="btn btn-sm btn-warning">Edit</CButton>{' '}
-                                  <CButton className="btn btn-sm btn-danger">Hapus</CButton>
+                                  <CButton className="btn btn-sm btn-warning" disabled>Edit</CButton>{' '}
+                                  <CButton className="btn btn-sm btn-danger" disabled>Hapus</CButton>
                               </td>
                           )
                       }

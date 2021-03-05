@@ -91,7 +91,7 @@ const FormDistribusi = (props) => {
             periode:"2020",
             npwp:"01.341.857.9-092.000",
             nmperusahaan:"Riau Andalan Pulp And Paper",
-            nmproduk:"Cairan Inhalasi",
+            nmproduk:"Tetes Mata",
             kota:"Semarang",
             provinsi:"Jawa Tengah",
             jmlproduk:"40.000",
@@ -119,7 +119,8 @@ const FormDistribusi = (props) => {
       { key: 'nmproduk', _style: { width: '27%'}, label:"Nama Produk" },
       { key: 'klasifikasi', _style: { width: '27%'}, label:"Klasifikasi Produk" }, 
       { key: 'subklasifikasi', _style: { width: '26%'}, label:"Subklasifikasi Produk" },                
-      { key: 'keterangan', _style: { width: '15%'}, label:"Keterangan" }
+      { key: 'keterangan', _style: { width: '15%'}, label:"Keterangan" },
+      { key: 'action', _style: { width: '15%'}, label:"Action" }      
     ]  
     const handleRencana = () => {
         setRencana([
@@ -345,10 +346,106 @@ const FormDistribusi = (props) => {
     }        
     useEffect(() => {
         setForm(props.certificate)
-        setForm1(props.informasi)
+        setForm1(props.informasi) 
       });
+      const pilihannegara = [
+        { value: 'ID', label: 'Indonesia' },
+        { value: 'MY', label: 'Malaysia' },
+        { value: 'TH', label: 'Thailand' },
+        { value: 'US', label: 'United States of America'},
+      ]   
+      const pilihanpelabuhan = [
+        { value: 'IDTPP', label: 'Tanjung Priok' },
+        { value: 'IDPKS', label: 'Pangkalan Susu' },
+        { value: 'IDKOJ', label: 'Koja' },
+        { value: 'IDRAU', label: 'Riau'},
+        { value: 'IDBLW', label: 'Belawan'},
+        { value: 'IDMAK', label: 'Makassar'},
+      ] 
+      const pilihansatuan = [
+        { value: 'TNE', label: 'Ton' },
+        { value: 'LTR', label: 'Liter' },
+        { value: 'KGM', label: 'Kilogram' }
+      ]    
+      const pilihankodehs = [
+        { value: '25010099', label: '2501.00.99' },
+        { value: '25010092', label: '2501.00.92' },          
+      ]   
+      const pilihanstdmutu = [
+        { value: '1', label: 'NaCl Maks 97%' },   
+        { value: '2', label: 'NaCl 97-99%' },          
+      ]
+      const [modaldistribusi, setModaldistribusi] = useState(false)      
   return (
     <>
+                <CModal
+                    show={modaldistribusi}
+                    onClose={()=>setModaldistribusi(false)}
+                    size="lg"                
+                >
+                    <CModalHeader closeButton>
+                        <h4>Input Realisasi Produksi</h4>
+                    </CModalHeader>
+                    <CModalBody>
+                        <CFormGroup>
+                            <CRow>
+                                <CCol md="3">
+                                    <CLabel>Periode</CLabel>
+                                    <CSelect>
+                                        <option>2020</option>
+                                        <option>2019</option>
+                                        <option>2018</option>
+                                    </CSelect>
+                                </CCol>                              
+                            </CRow>
+                            <CRow>
+                                <CCol md="4">
+                                    <CLabel>Nama Produk</CLabel>
+                                    <CInput/>
+                                </CCol>
+                                <CCol md="4">
+                                    <CLabel>Standard Mutu</CLabel>
+                                    <Select
+                                    options={pilihanstdmutu}
+                                    />
+                                </CCol> 
+                                <CCol md="4">
+                                    <CLabel>Pos Tarif</CLabel>
+                                    <Select
+                                    options={pilihankodehs}
+                                    />
+                                    {/* <CSelect>
+                                        <option></option>
+                                        <option>2501.00.99</option>
+                                        <option>2501.00.92</option>
+                                    </CSelect> */}
+                                </CCol>
+                            </CRow>
+                            <CRow> 
+                                <CCol md="6">
+                                    <CLabel>Jumlah Produk</CLabel>
+                                    <CInput type="number" />                                   
+                                </CCol>   
+                                <CCol md="6">
+                                    <CLabel>Satuan Produk</CLabel>
+                                    <Select
+                                    options={pilihansatuan}
+                                    />                                   
+                                </CCol>                                                                                                                              
+                            </CRow>                                                      
+                        </CFormGroup>
+                    </CModalBody>
+                    <CModalFooter>
+                      <CRow>
+                        <div className="pr-2">
+                        <CButton onClick={()=>handleRealisasi()} color="info">Simpan</CButton>                          
+                        </div>
+                        <div>
+                        <CButton color="danger">Batal</CButton>
+                        </div>
+                      </CRow>                         
+                    </CModalFooter>
+                </CModal>    
                 <div>
                 <h4>Rencana Distribusi</h4>
                 </div>
@@ -364,6 +461,14 @@ const FormDistribusi = (props) => {
                   fields={fieldrencanadistribusi}
                   items={rencana}
                   scopedSlots={{
+                      'action':
+                      (item) =>{
+                          return(
+                              <td>
+                              <CButton onClick={()=>setModaldistribusi(true)}className="btn-sm btn-warning">Distribusi</CButton>                                  
+                              </td>
+                          )
+                      },
                       'collapse':
                       (item, index) =>{
                           return(

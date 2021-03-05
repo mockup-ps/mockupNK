@@ -29,7 +29,35 @@ const FormPenyerapan = (props) => {
   const [details,setDetails] = useState([])   
   const [detail,setDetail] = useState([]) 
   const [modalalamatpabrik,setModalAlamatPabrik] = useState(false)
-  const [rencana, setRencana] = useState()
+  const [rencana, setRencana] = useState([
+    {
+        id:1,
+        npwp:"01.302.575.4-073.000",
+        nmperusahaan:"Pratapa Nirmala",
+        nmproduk:"Cairan Inhalasi",
+        klasifikasi:"Produk Farmasi",
+        subklasifikasi:"Obat",
+        keterangan:"-"
+    },
+    {
+        id:2,
+        npwp:"01.341.857.9-092.000",
+        nmperusahaan:"Riau Andalan Pulp And Paper",
+        nmproduk:"Cairan Inhalasi",
+        klasifikasi:"Produk Farmasi",
+        subklasifikasi:"Obat",
+        keterangan:"-"
+    },
+    {
+        id:3,
+        npwp:"01.062.213.2-092.000",
+        nmperusahaan:"Sulfindo Adiusaha",
+        nmproduk:"Cairan Inhalasi",
+        klasifikasi:"Produk Farmasi",
+        subklasifikasi:"Obat",
+        keterangan:"-"
+    }
+  ])
     const [form, setForm] = useState([{
         id:1,
         title:"",
@@ -111,7 +139,35 @@ const FormPenyerapan = (props) => {
             keterangan:"-"
         }                      
     ]
-    const [realisasi,setRealisasi] = useState() 
+    const [realisasi,setRealisasi] = useState([
+        {
+            id:1,
+            npwp:"01.302.575.4-073.000",
+            nmperusahaan:"Pratapa Nirmala",
+            nmproduk:"Cairan Inhalasi",
+            klasifikasi:"Produk Farmasi",
+            subklasifikasi:"Obat",
+            keterangan:"-"
+        },
+        {
+            id:2,
+            npwp:"01.341.857.9-092.000",
+            nmperusahaan:"Riau Andalan Pulp And Paper",
+            nmproduk:"Cairan Inhalasi",
+            klasifikasi:"Produk Farmasi",
+            subklasifikasi:"Obat",
+            keterangan:"-"
+        },
+        {
+            id:3,
+            npwp:"01.062.213.2-092.000",
+            nmperusahaan:"Sulfindo Adiusaha",
+            nmproduk:"Cairan Inhalasi",
+            klasifikasi:"Produk Farmasi",
+            subklasifikasi:"Obat",
+            keterangan:"-"
+        }
+    ]) 
     const [hitung, setHitung] = useState(0)
     const fieldrencanadistribusi = [
       { key: 'collapse', _style: { width: '2%'}, label:"" },                
@@ -353,11 +409,11 @@ const FormPenyerapan = (props) => {
                 <h4>Rencana Penyerapan</h4>
                 </div>
                 <hr/>
-                <div className="d-flex">                       
+                {/* <div className="d-flex">                       
                       <div className="ml-auto p-2 d-flex align-items-end"> 
                           <CButton onClick={()=>handleRencana()}className="btn btn-sm btn-info">Tambah + </CButton>
                       </div>                                                                   
-                  </div>                 
+                  </div>                  */}
               <CRow className="px-2">                 
                   <CDataTable
                   addTableClasses="joss"
@@ -397,11 +453,11 @@ const FormPenyerapan = (props) => {
                 <h4>Realisasi Penyerapan</h4>
                 </div>
                 <hr/> 
-                <div className="d-flex">                       
+                {/* <div className="d-flex">                       
                       <div className="ml-auto p-2 d-flex align-items-end"> 
                           <CButton onClick={()=>handleRealisasi()} className="btn btn-sm btn-info">Tambah + </CButton>
                       </div>                                                                   
-                  </div>                              
+                  </div>                               */}
               <CRow className="px-2">                               
               <CDataTable
                   addTableClasses="joss"
